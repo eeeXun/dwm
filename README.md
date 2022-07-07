@@ -15,3 +15,4 @@
 - [pertag](https://dwm.suckless.org/patches/pertag/dwm-pertag-20200914-61bb8b2.diff)
 - [placemouse](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-placemouse-6.3.diff)
 - [resizepoint](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-resizepoint-6.3.diff)
+- [restartsig](https://dwm.suckless.org/patches/restartsig/dwm-restartsig-20180523-6.2.diff)
