@@ -18,3 +18,4 @@
 - [restartsig](https://dwm.suckless.org/patches/restartsig/dwm-restartsig-20180523-6.2.diff)
 - [scratchpads](https://dwm.suckless.org/patches/scratchpads/dwm-scratchpads-20200414-728d397b.diff)
 - [shiftview](https://raw.githubusercontent.com/LukeSmithxyz/dwm/master/shiftview.c)
+- [stacker](https://dwm.suckless.org/patches/stacker/dwm-stacker-6.2.diff)
