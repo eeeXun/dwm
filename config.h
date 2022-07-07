@@ -29,6 +29,18 @@ static const char *colors[][3] = {
     [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
+typedef struct {
+    const char *name;
+    const void *cmd;
+} Sp;
+const char *spcmd1[] = { "st", "-n", "spterm", NULL };
+const char *spcmd2[] = { "st", "-n", "splf", "-e", "lf_run", NULL };
+static Sp scratchpads[] = {
+    /* name          cmd  */
+    {"spterm",      spcmd1},
+    {"splf",        spcmd2},
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8󰇰", "9", "0" };
 
@@ -40,6 +52,8 @@ static const Rule rules[] = {
     /* class                instance    title       tags mask     isfloating   monitor */
     { "thunderbird",        NULL,       NULL,       1 << 7,         0,          -1 },
     { "VirtualBox Manager", NULL,       NULL,       1 << 5,         0,          -1 },
+    { NULL,                 "spterm",   NULL,       SPTAG(0),       1,          -1 },
+    { NULL,                 "splf",     NULL,       SPTAG(1),       1,          -1 },
 };
 
 /* layout(s) */
@@ -126,6 +140,9 @@ static Key keys[] = {
     { 0,                            XK_Print,   spawn,          SHCMD("flameshot gui") },
     { ShiftMask,                    XK_Print,   spawn,          SHCMD("flameshot full") },
     { MODKEY,                       XK_Escape,  spawn,          SHCMD("powermenu") },
+    /* scratchpads */
+    { MODKEY|ShiftMask,             XK_Return,  togglescratch,  {.ui = 0 } },
+    { MODKEY|ShiftMask,             XK_l,       togglescratch,  {.ui = 1 } },
     /* audio */
     { 0, XF86XK_AudioMute,          spawn,      SHCMD("volume_ctrl toggle; kill -44 $(pidof dwmblocks)") },
     { 0, XF86XK_AudioRaiseVolume,   spawn,      SHCMD("volume_ctrl up; kill -44 $(pidof dwmblocks)") },
