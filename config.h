@@ -96,8 +96,9 @@ static Key keys[] = {
     { MODKEY,                       XK_f,       togglefullscr,  {0} },
     { MODKEY,                       XK_s,       togglefloating, {0} },
 
-    /* quit dwm */
+    /* quit/restart dwm */
     { MODKEY|ShiftMask,             XK_q,       quit,           {0} },
+    { MODKEY|ShiftMask,             XK_r,       quit,           {1} },
     /* close window */
     { MODKEY|ShiftMask,             XK_w,       killclient,     {0} },
     /* resize window */
