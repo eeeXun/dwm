@@ -86,6 +86,7 @@ static const char *roficmd[] = { "rofi", "-monitor", "-4", "-show", "drun", NULL
 static const char *browsercmd[] = { "google-chrome-stable", NULL };
 
 #include <X11/XF86keysym.h>
+#include "shiftview.c"
 
 static Key keys[] = {
     /* modifier                     key         function        argument */
@@ -120,6 +121,12 @@ static Key keys[] = {
     { MODKEY,                       XK_l,       setmfact,       {.f = +0.05} },
     /* switch between last opened tag */
     { MODKEY,                       XK_Tab,     view,           {0} },
+    /* go a tag left/right */
+    { MODKEY,               XK_bracketleft,     shiftview,      {.i = -1 } },
+    { MODKEY,               XK_bracketright,    shiftview,      {.i = +1 } },
+    /* move to left/right tag */
+    { MODKEY|ShiftMask,     XK_bracketleft,     shifttag,       {.i = -1 } },
+    { MODKEY|ShiftMask,     XK_bracketright,    shifttag,       {.i = +1 } },
     /* promote selected window to master */
     { MODKEY,                       XK_space,   zoom,           {0} },
     /* increase/decrease the number of master windows */
