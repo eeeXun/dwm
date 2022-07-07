@@ -10,3 +10,4 @@
 - [adjacenttag-skipvacant](https://dwm.suckless.org/patches/adjacenttag/dwm-adjacenttag-skipvacant-6.2.diff)
 - [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/dwm-alwayscenter-20200625-f04cac6.diff)
 - [autostart](https://dwm.suckless.org/patches/autostart/dwm-autostart-20210120-cb3f58a.diff)
+- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.3.diff)
