@@ -1,26 +1,3 @@
-/* Key binding functions */
-static void defaultgaps(const Arg *arg);
-static void incrgaps(const Arg *arg);
-static void togglegaps(const Arg *arg);
-/* Layouts */
-static void bstack(Monitor *m);
-static void centeredmaster(Monitor *m);
-static void centeredfloatingmaster(Monitor *m);
-static void deck(Monitor *m);
-static void dwindle(Monitor *m);
-static void fibonacci(Monitor *m, int s);
-static void nrowgrid(Monitor *m);
-static void tile(Monitor *m);
-/* Internals */
-static void getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc);
-static void getfacts(Monitor *m, int msize, int ssize, float *mf, float *sf, int *mr, int *sr);
-static void setgaps(int oh, int ov, int ih, int iv);
-
-/* Settings */
-#if !PERTAG_PATCH
-static int enablegaps = 1;
-#endif // PERTAG_PATCH
-
 void
 setgaps(int oh, int ov, int ih, int iv)
 {
@@ -33,18 +10,17 @@ setgaps(int oh, int ov, int ih, int iv)
 	selmon->gappov = ov;
 	selmon->gappih = ih;
 	selmon->gappiv = iv;
+	selmon->pertag->gaps[selmon->pertag->curtag] =
+		((oh & 0xFF) << 0) | ((ov & 0xFF) << 8) | ((ih & 0xFF) << 16) | ((iv & 0xFF) << 24);
 	arrange(selmon);
 }
 
 void
 togglegaps(const Arg *arg)
 {
-	#if PERTAG_PATCH
 	selmon->pertag->enablegaps[selmon->pertag->curtag] = !selmon->pertag->enablegaps[selmon->pertag->curtag];
-	#else
-	enablegaps = !enablegaps;
-	#endif // PERTAG_PATCH
-	arrange(NULL);
+
+	arrange(selmon);
 }
 
 void
@@ -68,11 +44,7 @@ void
 getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
 {
 	unsigned int n, oe, ie;
-	#if PERTAG_PATCH
-	oe = ie = selmon->pertag->enablegaps[selmon->pertag->curtag];
-	#else
-	oe = ie = enablegaps;
-	#endif // PERTAG_PATCH
+	oe = ie = m->pertag->enablegaps[m->pertag->curtag];
 	Client *c;
 
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
