@@ -3,6 +3,11 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -67,10 +72,19 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#include "vanitygaps.c"
+
 static const Layout layouts[] = {
     /* symbol   arrange function */
     { "[]=",    tile },
+    { "TTT",    bstack },
     { "[M]",    monocle },
+    { "[D]",    deck },
+    { "###",    nrowgrid },
+    { "[\\]",   dwindle },
+    { "|M|",    centeredmaster },
+    { ">M>",    centeredfloatingmaster },
     { "><>",    NULL },
 };
 
@@ -114,9 +128,15 @@ static Key keys[] = {
     { MODKEY,                       XK_slash,   view,           {.ui = ~0 } },
 
     /* layouts */
-    { MODKEY,                       XK_t,       setlayout,      {.v = &layouts[0]} },
-    { MODKEY,                       XK_m,       setlayout,      {.v = &layouts[1]} },
-    { MODKEY|ShiftMask,             XK_f,       setlayout,      {.v = &layouts[2]} },
+    { MODKEY,                       XK_m,       setlayout,      {.v = &layouts[0]} },   /* tile */
+    { MODKEY|ShiftMask,             XK_m,       setlayout,      {.v = &layouts[1]} },   /* bstack */
+    { MODKEY,                       XK_i,       setlayout,      {.v = &layouts[2]} },   /* monocle */
+    { MODKEY|ShiftMask,             XK_i,       setlayout,      {.v = &layouts[3]} },   /* deck */
+    { MODKEY,                       XK_u,       setlayout,      {.v = &layouts[4]} },   /* nrowgrid */
+    { MODKEY|ShiftMask,             XK_u,       setlayout,      {.v = &layouts[5]} },   /* dwindle */
+    { MODKEY,                       XK_y,       setlayout,      {.v = &layouts[6]} },   /* centeredmaster */
+    { MODKEY|ShiftMask,             XK_y,       setlayout,      {.v = &layouts[7]} },   /* centeredfloatingmaster */
+    { MODKEY|ShiftMask,             XK_f,       setlayout,      {.v = &layouts[8]} },   /* floating */
     { MODKEY,                       XK_f,       togglefullscr,  {0} },
     { MODKEY,                       XK_s,       togglefloating, {0} },
 
@@ -128,6 +148,11 @@ static Key keys[] = {
     /* resize window */
     { MODKEY,                       XK_h,       setmfact,       {.f = -0.05} },
     { MODKEY,                       XK_l,       setmfact,       {.f = +0.05} },
+    /* gaps */
+    { MODKEY,                       XK_a,       togglegaps,     {0} },
+    { MODKEY|ShiftMask,             XK_a,       defaultgaps,    {0} },
+    { MODKEY,                       XK_z,       incrgaps,       {.i = +3 } },
+    { MODKEY,                       XK_x,       incrgaps,       {.i = -3 } },
     /* switch between last opened tag */
     { MODKEY,                       XK_Tab,     view,           {0} },
     /* go a tag left/right */
@@ -183,11 +208,13 @@ static Key keys[] = {
 static Button buttons[] = {
     /* click                event mask      button          function        argument */
     { ClkLtSymbol,          0,              Button1,        setlayout,      {.v = &layouts[0]} },
-    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[1]} },
+    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
     { ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 1} },
     { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
     { ClkTagBar,            0,              Button1,        view,           {0} },
     { ClkTagBar,            0,              Button3,        toggleview,     {0} },
     { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
     { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { ClkClientWin,         MODKEY,         Button4,        incrgaps,       {.i = +1} },
+    { ClkClientWin,         MODKEY,         Button5,        incrgaps,       {.i = -1} },
 };
