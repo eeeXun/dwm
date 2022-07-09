@@ -11,7 +11,7 @@
 - [autostart](https://dwm.suckless.org/patches/autostart/dwm-autostart-20210120-cb3f58a.diff)
 - [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.3.diff)
 - [focusonclick](https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff)
-- [focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/dwm-focusonnetactive-6.2.diff)
+- [focusonnetactive](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-focusonnetactive-6.3.diff)
 - [pertag](https://dwm.suckless.org/patches/pertag/dwm-pertag-20200914-61bb8b2.diff)
 - [placemouse](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-placemouse-6.3.diff)
 - [resizepoint](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-resizepoint-6.3.diff)
