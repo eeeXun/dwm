@@ -22,3 +22,4 @@
 - [status2d-systray](https://dwm.suckless.org/patches/status2d/dwm-status2d-systray-6.3.diff)
 - [sticky](https://dwm.suckless.org/patches/sticky/dwm-sticky-6.1.diff)
 - [stickyindicator](https://dwm.suckless.org/patches/stickyindicator/dwm-stickyindicator-6.2.diff)
+- [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-6.2.diff)
