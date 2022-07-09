@@ -138,6 +138,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     XK_bracketright,    shifttag,       {.i = +1 } },
     /* promote selected window to master */
     { MODKEY,                       XK_space,   zoom,           {0} },
+    /* sticky windows */
+    { MODKEY|ShiftMask,             XK_s,       togglesticky,   {0} },
     /* increase/decrease the number of master windows */
     { MODKEY|ShiftMask,             XK_equal,   incnmaster,     {.i = +1 } },
     { MODKEY|ShiftMask,             XK_minus,   incnmaster,     {.i = -1 } },
