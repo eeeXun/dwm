@@ -70,6 +70,8 @@ static const char *termcmd[] = { "st", NULL };
 static const char *roficmd[] = { "rofi", "-monitor", "-4", "-show", "drun", NULL };
 static const char *browsercmd[] = { "google-chrome-stable", NULL };
 
+#include <X11/XF86keysym.h>
+
 static Key keys[] = {
     /* modifier                     key         function        argument */
     { MODKEY,                       XK_j,       focusstack,     {.i = +1 } },
@@ -121,6 +123,21 @@ static Key keys[] = {
     { 0,                            XK_Print,   spawn,          SHCMD("flameshot gui") },
     { ShiftMask,                    XK_Print,   spawn,          SHCMD("flameshot full") },
     { MODKEY,                       XK_Escape,  spawn,          SHCMD("powermenu") },
+    /* audio */
+    { 0, XF86XK_AudioMute,          spawn,      SHCMD("volume_ctrl toggle; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioRaiseVolume,   spawn,      SHCMD("volume_ctrl up; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioLowerVolume,   spawn,      SHCMD("volume_ctrl down; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioPlay,          spawn,      SHCMD("playerctl play-pause") },
+    { 0, XF86XK_AudioPrev,          spawn,      SHCMD("playerctl previous") },
+    { 0, XF86XK_AudioNext,          spawn,      SHCMD("playerctl next") },
+    /* backlight */
+    { 0, XF86XK_MonBrightnessUp,    spawn,      SHCMD("bright_ctrl up") },
+    { 0, XF86XK_MonBrightnessDown,  spawn,      SHCMD("bright_ctrl down") },
+    /* touchpad */
+    { 0, XF86XK_TouchpadToggle,     spawn,      SHCMD("touchpad_ctrl") },
+    /* screensaver */
+    { 0, XF86XK_PowerOff,           spawn,      SHCMD("xset dpms force off") },
+    { MODKEY, XF86XK_PowerOff,      spawn,      SHCMD("systemctl suspend") },
 };
 
 /* button definitions */
