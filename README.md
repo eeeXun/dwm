@@ -20,7 +20,7 @@
 - [restartsig](https://dwm.suckless.org/patches/restartsig/dwm-restartsig-20180523-6.2.diff)
 - [scratchpads](https://dwm.suckless.org/patches/scratchpads/dwm-scratchpads-20200414-728d397b.diff)
 - [stacker](https://dwm.suckless.org/patches/stacker/dwm-stacker-6.2.diff)
-- [status2d-systray](https://dwm.suckless.org/patches/status2d/dwm-status2d-systray-6.3.diff)
+- [status2d-systray](https://dwm.suckless.org/patches/status2d/dwm-status2d-systray-6.4.diff)
 - [statusallmons](https://dwm.suckless.org/patches/statusallmons/dwm-statusallmons-6.2.diff)
 - [sticky](https://dwm.suckless.org/patches/sticky/dwm-sticky-6.4.diff)
 - [stickyindicator](https://dwm.suckless.org/patches/stickyindicator/dwm-stickyindicator-6.2.diff)
