@@ -10,7 +10,7 @@
 - [adjacenttag-skipvacant](https://dwm.suckless.org/patches/adjacenttag/dwm-adjacenttag-skipvacant-6.2.diff)
 - [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/dwm-alwayscenter-20200625-f04cac6.diff)
 - [autostart](https://dwm.suckless.org/patches/autostart/dwm-autostart-20210120-cb3f58a.diff)
-- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.3.diff)
+- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.4.diff)
 - [focusonclick](https://dwm.suckless.org/patches/focusonclick/dwm-focusonclick-20200110-61bb8b2.diff)
 - [focusonnetactive](https://raw.githubusercontent.com/bakkeby/patches/master/dwm/dwm-focusonnetactive-6.3.diff)
 - [pertag](https://dwm.suckless.org/patches/pertag/dwm-pertag-20200914-61bb8b2.diff)
