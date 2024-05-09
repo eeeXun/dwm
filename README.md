@@ -2,7 +2,7 @@
 
 ## source
 
-- [suckless e81f17d](https://dwm.suckless.org/)
+- [suckless 061e9fe](https://dwm.suckless.org/)
 
 ## patches
 
