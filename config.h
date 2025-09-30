@@ -104,6 +104,12 @@ static Key keys[] = {
     { MODKEY,                       XK_l,       setmfact,       {.f = +0.05} },
     /* switch between last opened tag */
     { MODKEY,                       XK_Tab,     view,           {0} },
+    /* go a tag left/right */
+    { MODKEY,               XK_bracketleft,     viewprev,       {0} },
+    { MODKEY,               XK_bracketright,    viewnext,       {0} },
+    /* move to left/right tag */
+    { MODKEY|ShiftMask,     XK_bracketleft,     tagtoprev,      {0} },
+    { MODKEY|ShiftMask,     XK_bracketright,    tagtonext,      {0} },
     /* promote selected window to master */
     { MODKEY,                       XK_space,   zoom,           {0} },
     /* increase/decrease the number of master windows */
