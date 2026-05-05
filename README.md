@@ -2,7 +2,7 @@
 
 ## source
 
-- [suckless cfb8627](https://dwm.suckless.org/)
+- [suckless 44dbc68](https://dwm.suckless.org/)
 
 ## patches
 
