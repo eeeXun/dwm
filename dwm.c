@@ -56,12 +56,12 @@
                                * MAX(0, MIN((y)+(h),(z)->y+(z)->h) - MAX((y),(z)->y)))
 #define ISINC(X)                ((X) > 1000 && (X) < 3000)
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]) || C->issticky)
-#define PREVSEL                 3000
 #define MOD(N,M)                ((N)%(M) < 0 ? (N)%(M) + (M) : (N)%(M))
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define NUMTAGS					(LENGTH(tags) + LENGTH(scratchpads))
+#define PREVSEL                 3000
 #define TAGMASK     			((1 << NUMTAGS) - 1)
 #define SPTAG(i) 				((1 << LENGTH(tags)) << (i))
 #define SPTAGMASK   			(((1 << LENGTH(scratchpads))-1) << LENGTH(tags))
@@ -230,7 +230,7 @@ static void placemouse(const Arg *arg);
 static void pop(Client *c);
 static unsigned int prevtag(void);
 static void propertynotify(XEvent *e);
-static void pushstack(const Arg *arg);
+static void pushstack(const Arg *arg); /* patch stacker */
 static void quit(const Arg *arg);
 static Client *recttoclient(int x, int y, int w, int h);
 static Monitor *recttomon(int x, int y, int w, int h);
@@ -259,7 +259,7 @@ static void showhide(Client *c);
 static void sighup(int unused);
 static void sigterm(int unused);
 static void spawn(const Arg *arg);
-static int stackpos(const Arg *arg);
+static int stackpos(const Arg *arg); /* patch stacker */
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
@@ -1130,7 +1130,7 @@ focusstack(const Arg *arg)
 	int i = stackpos(arg);
 	Client *c, *p;
 
-	if (i < 0 || !selmon->sel || (selmon->sel->isfullscreen && lockfullscreen))
+	if (i < 0 || (selmon->sel->isfullscreen && lockfullscreen))
 		return;
 
 	for(p = NULL, c = selmon->clients; c && (i || !ISVISIBLE(c));
